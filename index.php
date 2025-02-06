@@ -4,23 +4,51 @@
         <meta charset="UTF-8">
         <title>My First PHP Roleplay game</title>
 
-        <?php include_once "assets/php/Character.php"; ?>
+        <script> <!-- don't make attack again on page reload (is annoying) -->
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
+
+        <?php
+            require_once "assets/php/class/Character.php";
+            require_once "assets/php/form.php";
+
+            // use session to store the characters
+            // without a session, the characters would be reset on every form.php submission
+            session_start();
+
+            // initialize the characters and handle the attack action
+            initCharacters();
+
+            echo $_SESSION['player']->getName() . " vs. " . $_SESSION['enemy']->getName() . "<br /><br />";
+        ?>
     </head>
     <body>
 
-        <?php
+        <form method="post">
+            <div>
+                <label for="weapon">Waffenart (Schwert/Dolch/etc):</label>
+                <input type="text" id="weapon" name="weapon" required>
+            </div>
+            <div>
+                <label for="block_dir">Blockrichtung (unten/mitte/oben):</label>
+                <input type="text" id="block_dir" name="block_dir" required>
+            </div>
 
-            $player = new Character(120, 8, 12, 18);
-            $enemy = new Character(200, 15, 10, 5);
+            <button type="submit" name="attack" style="margin-top: 0.5rem;">Angreifen</button>
 
-            $player->setName("Gandalf");
-            $enemy->setName("Sauron");
-
-            echo $player->getName() . " vs. " . $enemy->getName() . "<br />";
-
-            $dmg = $player->attack("Schwerter"); // damage based on weapon and strength
-            $dmg_taken = $enemy->defend("mitte"); // 0 = block success, 10 = block failed
-        ?>
+            <div style="margin-top: 2rem;">
+                <label for="player_hp" >Spieler HP:</label>
+                <input id="player_hp" type="text" readonly style="width: 3rem;"
+                       value="<?php echo $_SESSION['player']->getHealth(); ?>">
+            </div>
+            <div>
+                <label for="enemy_hp">Gegner HP:</label>
+                <input id="enemy_hp" type="text" readonly style="width: 3rem;"
+                       value="<?php echo $_SESSION['enemy']->getHealth(); ?>">
+            </div>
+        </form>
 
     </body>
 </html>
