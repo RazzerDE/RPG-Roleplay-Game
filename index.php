@@ -17,6 +17,9 @@
             $enemy->setName("Sauron");
 
             echo $player->getName() . " vs. " . $enemy->getName() . "<br />";
+
+            $dmg = $player->attack("Schwerter"); // damage based on weapon and strength
+            $dmg_taken = $enemy->defend("mitte"); // 0 = block success, 10 = block failed
         ?>
 
     </body>

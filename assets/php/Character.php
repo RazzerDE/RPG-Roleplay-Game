@@ -18,6 +18,42 @@ class Character {
         $this->name = $name;
     }
 
+    //              FIGHT METHODS
+
+    /**
+     * Calculates the attack damage based on the weapon type and character's strength.
+     *
+     * @param string $weapon_type The type of weapon used for the attack.
+     * @return int The calculated damage of the attack.
+     */
+    public function attack(string $weapon_type): int {
+        $baseDmg = match($weapon_type) {
+            'Schwert' => 10,
+            'Dolch' => 6,
+            default => 4
+        };
+
+        // 50% of the strength attribute is added to the base damage
+        $dmg = $this->strength * 0.5;
+        return (int)($baseDmg + $dmg);
+    }
+
+    /**
+     * Defends against an enemy attack by blocking in a specified direction.
+     *
+     * @param string $block_dir The direction in which the character attempts to block (e.g., "unten", "mitte", "oben").
+     * @return int Returns 0 if the block is successful, otherwise returns 10.
+     */
+    public function defend(string $block_dir): int {
+        $enemy_pos = ["unten", "mitte", "oben"][rand(0, 2)];
+
+        if ($block_dir === $enemy_pos) {
+            return 0; // block success
+        }
+
+        return 10; // block failed
+    }
+
 
     //              GETTER METHODS
 
@@ -26,7 +62,7 @@ class Character {
         return $this->name;
     }
 
-    public function getHealthPoints(): int {
+    public function getHealth(): int {
         return $this->health;
     }
 
@@ -50,7 +86,7 @@ class Character {
         $this->name = $name;
     }
 
-    public function setHealthPoints(int $health): void {
+    public function setHealth(int $health): void {
         $this->health = $health;
     }
 
