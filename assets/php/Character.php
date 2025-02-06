@@ -3,24 +3,19 @@
 class Character {
     // Attributes
     private string $name;
-    private int $healthPoints;
+    private int $health;
     private int $strength;
-    private int $dexterity;
+    private int $dexterity; // Geschicklichkeit
     private int $intelligence;
 
-    // Constructor: called when a new object is created
-    public function __construct(
-        string $name = "Unnamed",
-        int $healthPoints = 100,
-        int $strength = 10,
-        int $dexterity = 10,
-        int $intelligence = 10
-    ) {
-        $this->name = $name;
-        $this->healthPoints = $healthPoints;
+    // Constructor: called when a new object is created, set default values
+    public function __construct(int $health = 100, int $strength = 10, int $dexterity = 10, int $intelligence = 10,
+                                string $name = "Unnamed") {
+        $this->health = $health;
         $this->strength = $strength;
         $this->dexterity = $dexterity;
         $this->intelligence = $intelligence;
+        $this->name = $name;
     }
 
 
@@ -32,7 +27,7 @@ class Character {
     }
 
     public function getHealthPoints(): int {
-        return $this->healthPoints;
+        return $this->health;
     }
 
     public function getStrength(): int {
@@ -55,8 +50,8 @@ class Character {
         $this->name = $name;
     }
 
-    public function setHealthPoints(int $healthPoints): void {
-        $this->healthPoints = $healthPoints;
+    public function setHealthPoints(int $health): void {
+        $this->health = $health;
     }
 
     public function setStrength(int $strength): void {

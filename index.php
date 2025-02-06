@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My First PHP Roleplay game</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>My First PHP Roleplay game</title>
 
-    <?php include_once "assets/php/Character.php";
+        <?php include_once "assets/php/Character.php"; ?>
+    </head>
+    <body>
 
-        $character = new Character("Gandalf", 120, 8, 12, 18);
-        $character->setHealthPoints(100);
+        <?php
 
-        echo "Name: " . $character->getName() . "<br />";
-        echo "Lebenspunkte: " . $character->getHealthPoints();
+            $player = new Character(120, 8, 12, 18);
+            $enemy = new Character(200, 15, 10, 5);
 
-    ?>
+            $player->setName("Gandalf");
+            $enemy->setName("Sauron");
 
-</body>
+            echo $player->getName() . " vs. " . $enemy->getName() . "<br />";
+        ?>
+
+    </body>
 </html>
