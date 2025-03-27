@@ -27,8 +27,6 @@
 › `RPG-Roleplay-Game` offers some fundamental features that help you better understand or apply basic concepts in certain areas.
 <br />
 
-📢 › This project uses a handful third-party libraries: `Tailwind`, `Bootstrap`, `JEST` and `Animate.css`.
-
 It supports following <strong>features</strong>:
 <ul> 
   <li>🖼️ <strong>Creative & beautiful design</strong>: We have put a lot of thought into the design of the website and wanted it to be something unique - we have put a lot of love and attention to detail into it.</li>
