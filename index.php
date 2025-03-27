@@ -199,43 +199,55 @@
                     </div>
                 </div>
 
-<!--                <div class="game-status">-->
-<!--                    Du hast gewonnen!-->
-<!--                </div>-->
+                <div class="game-status">
+                    <?php
+                        if ($_SESSION['enemy']->getHealth() <= 0 && $_SESSION['player']->getSkillPoints() == 0) {
+                            $_SESSION['player']->addSkillPoints(2); // add skill points
+                            $_SESSION['isWinner'] = true;
 
-<!--                <div class="skill-selection">-->
-<!--                    <div class="panel-title">Skill Points: 1</div>-->
-<!--                    <div class="radio-group">-->
-<!--                        <label>-->
-<!--                            <input type="radio" name="skill" value="health">-->
-<!--                            Health-->
-<!--                        </label>-->
-<!--                        <label>-->
-<!--                            <input type="radio" name="skill" value="strength">-->
-<!--                            Strength-->
-<!--                        </label>-->
-<!--                        <label>-->
-<!--                            <input type="radio" name="skill" value="dexterity">-->
-<!--                            Dexterity-->
-<!--                        </label>-->
-<!--                        <label>-->
-<!--                            <input type="radio" name="skill" value="intelligence">-->
-<!--                            Intelligence-->
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                    <button class="btn skill-upgrade-btn">Skill Aufwerten</button>-->
-<!--                </div>-->
-
-                <div class="action-buttons" style="margin-top: auto;">
-                    <button class="btn btn-attack" type="submit" name="attack"
-                        <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>>
-                        Angreifen
-                    </button>
-                    <button class="btn btn-reset" type="submit" name="restart"
-                        <?php echo ($_SESSION['player']->getHealth() > 0 && $_SESSION['enemy']->getHealth() > 0) ? 'disabled' : '' ?>>
-                        Nächste Runde
-                    </button>
+                            echo "<div class='green'>Du hast gewonnen! 🎉</div>";
+                        } else if ($_SESSION['player']->getHealth() <= 0) {
+                            echo "<div class='red'>Du hast verloren.. 😢</div>";
+                        }
+                    ?>
                 </div>
+
+                <?php if (isset($_SESSION['isWinner']) && $_SESSION['isWinner'] && $_SESSION['player']->getSkillPoints() > 0) : ?>
+                    <div class="skill-selection" style="margin-bottom: 30px;">
+                        <div class="panel-title">Skill Punkte: <?php echo $_SESSION['player']->getSkillPoints(); ?></div>
+                        <div class="radio-group">
+                            <label>
+                                <input type="checkbox" id="health_points" name="health_points">
+                                Leben
+                            </label>
+                            <label>
+                                <input type="checkbox" id="strength_points" name="strength_points">
+                                Stärke
+                            </label>
+                            <label>
+                                <input type="checkbox" id="dexterity_points" name="dexterity_points">
+                                Geschicklichkeit
+                            </label>
+                            <label>
+                                <input type="checkbox" id="intelligence_points" name="intelligence_points">
+                                Intelligenz
+                            </label>
+                        </div>
+                        <button type="submit" name="set_skills" class="btn skill-upgrade-btn">Skill Aufwerten</button>
+                    </div>
+
+                <?php endif; ?>
+
+                    <div class="action-buttons" style="margin-top: auto;">
+                        <button class="btn btn-attack" type="submit" name="attack"
+                            <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>>
+                            Angreifen
+                        </button>
+                        <button class="btn btn-reset" type="submit" name="restart"
+                            <?php echo ($_SESSION['player']->getHealth() > 0 && $_SESSION['enemy']->getHealth() > 0) ? 'disabled' : '' ?>>
+                            Nächste Runde
+                        </button>
+                    </div>
             <?php endif; ?>
         </div>
     </form>

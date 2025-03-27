@@ -103,6 +103,14 @@
     margin-bottom: 15px;
 }
 
+.red {
+    color: var(--red-accent);
+}
+
+.green {
+    color: var(--green-accent);
+}
+
 .skill-selection {
     background-color: rgba(33, 150, 243, 0.1);
     padding: 15px;

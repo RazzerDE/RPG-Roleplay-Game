@@ -40,10 +40,10 @@
         
         // something got skilled
         if (isset($_POST['set_skills']) && isset($_SESSION['isWinner'])) {
-            $healthPoints = (int)$_POST['health_points'];
-            $strengthPoints = (int)$_POST['strength_points'];
-            $dexterityPoints = (int)$_POST['dexterity_points'];
-            $intelligencePoints = (int)$_POST['intelligence_points'];
+            $healthPoints = isset($_POST['health_points']) ? 1 : 0;
+            $strengthPoints = isset($_POST['strength_points']) ? 1 : 0;
+            $dexterityPoints = isset($_POST['dexterity_points']) ? 1 : 0;
+            $intelligencePoints = isset($_POST['intelligence_points']) ? 1 : 0;
         
             // verify that points are not exceeding the correct amount
             $totalPoints = $healthPoints + $strengthPoints + $dexterityPoints + $intelligencePoints;
