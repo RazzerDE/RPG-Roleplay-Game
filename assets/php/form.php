@@ -39,7 +39,7 @@
         }
         
         // something got skilled
-        if (isset($_POST['distribute_points']) && isset($_SESSION['isWinner'])) {
+        if (isset($_POST['set_skills']) && isset($_SESSION['isWinner'])) {
             $healthPoints = (int)$_POST['health_points'];
             $strengthPoints = (int)$_POST['strength_points'];
             $dexterityPoints = (int)$_POST['dexterity_points'];
@@ -49,11 +49,11 @@
             $totalPoints = $healthPoints + $strengthPoints + $dexterityPoints + $intelligencePoints;
         
             if ($totalPoints <= $_SESSION['player']->getSkillPoints()) {
-                $_SESSION['player_skills'] = [
-                    'health' => $healthPoints,
-                    'strength' => $strengthPoints,
-                    'dexterity' => $dexterityPoints,
-                    'intelligence' => $intelligencePoints,
+                $_SESSION['player_skills'] = [ // get skills from session and add new ones
+                    'health' => $healthPoints + ($_SESSION['player_skills']['health'] ?? 0),
+                    'strength' => $strengthPoints + ($_SESSION['player_skills']['strength'] ?? 0),
+                    'dexterity' => $dexterityPoints + ($_SESSION['player_skills']['dexterity'] ?? 0),
+                    'intelligence' => $intelligencePoints + ($_SESSION['player_skills']['intelligence'] ?? 0),
                 ];
 
                 $_SESSION['isWinner'] = false;
@@ -77,7 +77,7 @@
      *
      * @return void
      */
-    function chooseEnemy() {
+    function chooseEnemy(): void {
         $_SESSION['enemy'] = match (rand(1, 3)) {
             1 => new Character(200, 15, 10, 5, "Sauron"),  // Sauron (Normaler Gegner)
             2 => new Character(300, 20, 12, 8, "Morgoth"), // Morgoth (Stärkerer Gegner)
@@ -93,7 +93,7 @@
      * 
      * @return void
      */
-    function updateSkills() {
+    function updateSkills(): void {
         $player = $_SESSION['player'];
 
         $_SESSION['player']->setHealth($player->getHealth() + $_SESSION['player_skills']['health']);

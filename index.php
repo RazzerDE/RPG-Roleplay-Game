@@ -142,7 +142,7 @@
                         <input type="number" id="intelligence_points" name="intelligence_points" value="0" min="0" max="<?php echo $_SESSION['player']->getSkillPoints(); ?>">
                     </div>
 
-                    <button type="submit" name="distribute_points" style="margin-top: 1rem;">Punkte verteilen</button>
+                    <button type="submit" name="set_skills" style="margin-top: 1rem;">Punkte verteilen</button>
                 </form>
             <?php endif; ?>
     </div>
