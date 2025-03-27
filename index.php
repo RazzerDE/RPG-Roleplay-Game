@@ -134,8 +134,8 @@
                                 <input type="radio" id="block_unten" name="block_dir" value="unten"
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
-                                <img src="assets/img/outline/down.svg" alt="Up-Icon" class="stat-icon invert" />
-                                <label for="block_unten">Oben</label>
+                                <img src="assets/img/outline/down.svg" alt="Down-Icon" class="stat-icon invert" />
+                                <label for="block_unten">Unten</label>
                             </div>
                         </div>
                     </div>
@@ -167,8 +167,24 @@
 
                 <div style="margin-top: 5px;">
                     <div class="panel-title">Kampffortschritt</div>
+                    <?php
+                        // calculate progress for bar
+                        $maxEnemyHealth = $_SESSION['enemy']->getMaxHealth();
+                        $currentEnemyHealth = $_SESSION['enemy']->getHealth();
+                        $healthLost = $maxEnemyHealth - $currentEnemyHealth;
+                        $progressPercentage = ($healthLost / $maxEnemyHealth) * 100;
+
+                        // set unique color based on $progressPercentage
+                        $barColor = "#FF5252"; // red
+                        if ($progressPercentage >= 25 && $progressPercentage < 75) {
+                            $barColor = "#FFA726"; // orange
+                        } elseif ($progressPercentage >= 75) {
+                            $barColor = "#66BB6A"; // green
+                        }
+                    ?>
+
                     <div class="progress-bar">
-                        <div class="progress-bar-fill"></div>
+                        <div style="height: 100%; width: <?php echo $progressPercentage; ?>%; background-color: <?php echo $barColor; ?>"></div>
                     </div>
                 </div>
 

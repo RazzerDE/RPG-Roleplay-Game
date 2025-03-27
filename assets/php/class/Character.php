@@ -9,11 +9,13 @@ class Character {
     private int $intelligence;
 
     private int $skillPoints = 0;
+    private int $maxHealth = 100;
 
     // Constructor: called when a new object is created, set default values
     public function __construct(int $health = 100, int $strength = 10, int $dexterity = 10, int $intelligence = 10,
                                 string $name = "Unnamed") {
         $this->health = $health;
+        $this->maxHealth = $health;
         $this->strength = $strength;
         $this->dexterity = $dexterity;
         $this->intelligence = $intelligence;
@@ -68,6 +70,10 @@ class Character {
 
     public function getHealth(): int {
         return $this->health;
+    }
+
+    public function getMaxHealth(): int {
+        return $this->maxHealth;
     }
 
     public function getStrength(): int {
