@@ -6,7 +6,7 @@
   <i align="center">This little RPG game is about a fight in which you must attack your opponent and defend yourself.</i>
   <br /><br />
 
-  <img src="https://i.imgur.com/xcb6NNm.png" align="center">
+  <img src="https://i.imgur.com/TR2QLNm.png" align="center">
 
 </p>
 
