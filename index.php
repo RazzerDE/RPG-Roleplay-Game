@@ -39,30 +39,30 @@
             <!-- Player Character -->
             <?php if ($_SESSION['player']) : ?>
                 <div class="character-panel">
-                    <div class="panel-title">Mein Charakter</div>
+                    <div class="panel-title">My Character</div>
 
                     <!-- Player Stats -->
                     <div class="stat-item">
                         <img src="assets/img/heart.png" alt="Health-Icon" class="stat-icon" />
-                        <span>Lebenspunkte: <?php echo $_SESSION['player']->getHealth(); ?></span>
+                        <span>Health: <?php echo $_SESSION['player']->getHealth(); ?></span>
                     </div>
                     <div class="stat-item">
                         <img src="assets/img/strength.png" alt="Strength-Icon" class="stat-icon" />
-                        <span>Stärke: <?php echo $_SESSION['player']->getStrength(); ?></span>
+                        <span>Strength: <?php echo $_SESSION['player']->getStrength(); ?></span>
                     </div>
                     <br />
                     <div class="stat-item">
                         <img src="assets/img/brain.png" alt="Intelligence-Icon" class="stat-icon" />
-                        <span>Intelligenz: <?php echo $_SESSION['player']->getIntelligence(); ?></span>
+                        <span>Intelligence: <?php echo $_SESSION['player']->getIntelligence(); ?></span>
                     </div>
                     <div class="stat-item">
                         <img src="assets/img/dexterity.png" alt="Dexterity-Icon" class="stat-icon" />
-                        <span>Geschicklichkeit: <?php echo $_SESSION['player']->getDexterity(); ?></span>
+                        <span>Dexterity: <?php echo $_SESSION['player']->getDexterity(); ?></span>
                     </div>
 
                     <!-- Pick weapon to attack -->
                     <div style="margin-top: 15px;">
-                        <label for="weapon" class="panel-title">Waffenauswahl</label>
+                        <label for="weapon" class="panel-title">Weapontype</label>
                         <div style="height: 10px;"></div>
 
                         <div class="radio-group row">
@@ -71,7 +71,7 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/sword.svg" alt="Sword-Icon" class="stat-icon invert" />
-                                <label for="weapon_schwert">Schwert</label>
+                                <label for="weapon_schwert">Sword</label>
                             </div>
 
                             <div>
@@ -79,7 +79,7 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/knife.svg" alt="Dagger-Icon" class="stat-icon invert" />
-                                <label for="weapon_dolch">Dolch</label>
+                                <label for="weapon_dolch">Dagger</label>
                             </div>
 
                             <div>
@@ -87,7 +87,7 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/bow.svg" alt="Bow-Icon" class="stat-icon invert" />
-                                <label for="weapon_bogen">Bogen</label>
+                                <label for="weapon_bogen">Bow</label>
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/fireball.svg" alt="Bow-Icon" class="stat-icon invert" />
-                                <label for="weapon_feuerball">Feuerball</label>
+                                <label for="weapon_feuerball">Fireball</label>
                             </div>
 
                             <div>
@@ -105,14 +105,14 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/magic_hit.svg" alt="Magic Hit-Icon" class="stat-icon invert" />
-                                <label for="weapon_magischer_schlag">Magischer Schlag</label>
+                                <label for="weapon_magischer_schlag">Magic Hit</label>
                             </div>
                         </div>
                     </div>
 
                     <!-- Pick block direction to defend -->
                     <div style="margin-top: 15px;">
-                        <label for="block_dir" class="panel-title">Blockrichtung</label>
+                        <label for="block_dir" class="panel-title">Block direction</label>
                         <div style="height: 10px;"></div>
 
                         <div class="radio-group column">
@@ -121,21 +121,21 @@
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/up.svg" alt="Up-Icon" class="stat-icon invert" />
-                                <label for="block_oben">Oben</label>
+                                <label for="block_oben">Up</label>
                             </div>
                             <div>
                                 <input type="radio" id="block_mitte" name="block_dir" value="mitte"
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/right.svg" alt="Right-Icon" class="stat-icon invert" />
-                                <label for="block_mitte">Mitte</label>
+                                <label for="block_mitte">Mid</label>
                             </div>
                             <div>
                                 <input type="radio" id="block_unten" name="block_dir" value="unten"
                                     <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>
                                 >
                                 <img src="assets/img/outline/down.svg" alt="Down-Icon" class="stat-icon invert" />
-                                <label for="block_unten">Unten</label>
+                                <label for="block_unten">Down</label>
                             </div>
                         </div>
                     </div>
@@ -145,28 +145,28 @@
             <!-- Enemy Character -->
             <?php if ($_SESSION['enemy']) : ?>
             <div class="character-panel" style="display: flex; flex-direction: column;">
-                <div class="panel-title">Gegner - <?php echo $_SESSION['enemy']->getName() ?></div>
+                <div class="panel-title">Enemy - <?php echo $_SESSION['enemy']->getName() ?></div>
 
                 <div class="stat-item">
                     <img src="assets/img/heart.png" alt="Health-Icon" class="stat-icon" />
-                    <span>Lebenspunkte: <?php echo $_SESSION['enemy']->getHealth(); ?></span>
+                    <span>Health: <?php echo $_SESSION['enemy']->getHealth(); ?></span>
                 </div>
                 <div class="stat-item">
                     <img src="assets/img/strength.png" alt="Strength-Icon" class="stat-icon" />
-                    <span>Stärke: <?php echo $_SESSION['enemy']->getStrength(); ?></span>
+                    <span>Strength: <?php echo $_SESSION['enemy']->getStrength(); ?></span>
                 </div>
                 <br />
                 <div class="stat-item">
                     <img src="assets/img/brain.png" alt="Intelligence-Icon" class="stat-icon" />
-                    <span>Intelligenz: <?php echo $_SESSION['enemy']->getIntelligence(); ?></span>
+                    <span>Intelligence: <?php echo $_SESSION['enemy']->getIntelligence(); ?></span>
                 </div>
                 <div class="stat-item">
                     <img src="assets/img/dexterity.png" alt="Dexterity-Icon" class="stat-icon" />
-                    <span>Geschicklichkeit: <?php echo $_SESSION['enemy']->getDexterity(); ?></span>
+                    <span>Dexterity: <?php echo $_SESSION['enemy']->getDexterity(); ?></span>
                 </div>
 
                 <div style="margin-top: 5px;">
-                    <div class="panel-title">Kampffortschritt</div>
+                    <div class="panel-title">Fightprogress</div>
                     <?php
                         // calculate progress for bar
                         $maxEnemyHealth = $_SESSION['enemy']->getMaxHealth();
@@ -190,11 +190,11 @@
 
                 <div class="hp-display" style="margin-top: 15px;">
                     <div class="hp-input">
-                        <label for="player_hp">Spieler's Leben:</label>
+                        <label for="player_hp">Player's Health:</label>
                         <input id="player_hp" type="text" value="<?php echo $_SESSION['player']->getHealth(); ?>" readonly>
                     </div>
                     <div class="hp-input">
-                        <label for="enemy_hp">Gegner's Leben:</label>
+                        <label for="enemy_hp">Enemy's Health:</label>
                         <input id="enemy_hp" type="text" value="<?php echo $_SESSION['enemy']->getHealth(); ?>" readonly>
                     </div>
                 </div>
@@ -205,35 +205,35 @@
                             $_SESSION['player']->addSkillPoints(2); // add skill points
                             $_SESSION['isWinner'] = true;
 
-                            echo "<div class='green'>Du hast gewonnen! 🎉</div>";
+                            echo "<div class='green'>You won! 🎉</div>";
                         } else if ($_SESSION['player']->getHealth() <= 0) {
-                            echo "<div class='red'>Du hast verloren.. 😢</div>";
+                            echo "<div class='red'>You lost.. 😢</div>";
                         }
                     ?>
                 </div>
 
                 <?php if (isset($_SESSION['isWinner']) && $_SESSION['isWinner'] && $_SESSION['player']->getSkillPoints() > 0) : ?>
                     <div class="skill-selection" style="margin-bottom: 30px;">
-                        <div class="panel-title">Skill Punkte: <?php echo $_SESSION['player']->getSkillPoints(); ?></div>
+                        <div class="panel-title">Skill Points: <?php echo $_SESSION['player']->getSkillPoints(); ?></div>
                         <div class="radio-group">
                             <label>
                                 <input type="checkbox" id="health_points" name="health_points">
-                                Leben
+                                Health
                             </label>
                             <label>
                                 <input type="checkbox" id="strength_points" name="strength_points">
-                                Stärke
+                                Strength
                             </label>
                             <label>
                                 <input type="checkbox" id="dexterity_points" name="dexterity_points">
-                                Geschicklichkeit
+                                Dexterity
                             </label>
                             <label>
                                 <input type="checkbox" id="intelligence_points" name="intelligence_points">
-                                Intelligenz
+                                Intelligence
                             </label>
                         </div>
-                        <button type="submit" name="set_skills" class="btn skill-upgrade-btn">Skill Aufwerten</button>
+                        <button type="submit" name="set_skills" class="btn skill-upgrade-btn">Level Up Skills</button>
                     </div>
 
                 <?php endif; ?>
@@ -241,11 +241,11 @@
                     <div class="action-buttons" style="margin-top: auto;">
                         <button class="btn btn-attack" type="submit" name="attack"
                             <?php echo ($_SESSION['player']->getHealth() <= 0 || $_SESSION['enemy']->getHealth() <= 0) ? 'disabled' : '' ?>>
-                            Angreifen
+                            Attack
                         </button>
                         <button class="btn btn-reset" type="submit" name="restart"
                             <?php echo ($_SESSION['player']->getHealth() > 0 && $_SESSION['enemy']->getHealth() > 0) ? 'disabled' : '' ?>>
-                            Nächste Runde
+                            Next Round
                         </button>
                     </div>
             <?php endif; ?>

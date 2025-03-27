@@ -5,7 +5,7 @@ class Character {
     private string $name;
     private int $health;
     private int $strength;
-    private int $dexterity; // Geschicklichkeit
+    private int $dexterity;
     private int $intelligence;
 
     private int $skillPoints = 0;
@@ -40,7 +40,7 @@ class Character {
         };
 
         // 50% of the strength attribute is added to the base damage
-        $dmg = $this->strength * 10;//0.5; // 50% of strength is added to all attacks
+        $dmg = $this->strength * 0.5; // 50% of strength is added to all attacks
         return (int)($baseDmg + $dmg);
     }
 
