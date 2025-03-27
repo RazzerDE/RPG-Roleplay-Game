@@ -8,6 +8,8 @@ class Character {
     private int $dexterity; // Geschicklichkeit
     private int $intelligence;
 
+    private int $skillPoints = 0;
+
     // Constructor: called when a new object is created, set default values
     public function __construct(int $health = 100, int $strength = 10, int $dexterity = 10, int $intelligence = 10,
                                 string $name = "Unnamed") {
@@ -30,11 +32,13 @@ class Character {
         $baseDmg = match($weapon_type) {
             'Schwert' => 10,
             'Dolch' => 6,
+            'Feuerball' => 5 + $this->intelligence * 0.3,
+            'Magischer Schlag' => ($this->strength + $this->intelligence) * 0.4, // 40% of strength and intelligence
             default => 4
         };
 
         // 50% of the strength attribute is added to the base damage
-        $dmg = $this->strength * 0.5;
+        $dmg = $this->strength * 10;//0.5; // 50% of strength is added to all attacks
         return (int)($baseDmg + $dmg);
     }
 
@@ -78,6 +82,10 @@ class Character {
         return $this->intelligence;
     }
 
+    public function getSkillPoints(): int {
+        return $this->skillPoints;
+    } 
+
 
     //              SETTER METHODS
 
@@ -100,5 +108,9 @@ class Character {
 
     public function setIntelligence(int $intelligence): void {
         $this->intelligence = $intelligence;
+    }
+
+    public function addSkillPoints(int $points): void {
+        $this->skillPoints += $points;
     }
 }
