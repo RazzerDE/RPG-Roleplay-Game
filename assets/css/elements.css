@@ -1,0 +1,155 @@
+.game-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.character-panel {
+    flex: 1;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.panel-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.invert {
+    @media (prefers-color-scheme: dark) {
+        filter: invert(80%);
+    }
+
+    @media (prefers-color-scheme: light) {
+        filter: invert(0%);
+    }
+}
+
+.stat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.radio-group {
+    display: flex;
+    column-gap: 10px;
+    gap: 10px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.radio-group div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-group input {
+    margin-right: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background-color: var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar-fill {
+    width: 75%;
+    height: 100%;
+    background-color: var(--green-accent);
+}
+
+.hp-display {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.hp-input {
+    width: 48%;
+}
+
+.hp-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.game-status {
+    text-align: center;
+    font-weight: bold;
+    color: var(--green-accent);
+    margin-bottom: 15px;
+}
+
+.skill-selection {
+    background-color: rgba(33, 150, 243, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+.btn-attack {
+    background-color: var(--green-accent);
+}
+
+.btn-reset {
+    background-color: var(--red-accent);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.skill-upgrade-btn {
+    background-color: var(--blue-accent);
+    width: 100%;
+    margin-top: 10px;
+}
