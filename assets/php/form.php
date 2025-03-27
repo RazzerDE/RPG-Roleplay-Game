@@ -1,55 +1,55 @@
 <?php
 
     /**
-     * Initializes the player and enemy characters if they do not already exist in the session.
-     * Handles the attack action triggered via a POST request, updating the health of both characters.
+     * Initialisiert die Spieler- und Gegnercharaktere, sofern sie noch nicht in der Sitzung vorhanden sind.
+     * Verarbeitet die über eine POST-Anfrage ausgelöste Angriffsaktion und aktualisiert den Gesundheitszustand beider Charaktere.
      *
      * @return void
      */
     function initCharacters(): void {
-        // create characters if they don't exist yet (or got restarted)
+        // Charaktere erstellen, wenn sie noch nicht existieren (oder das Spiel neugestartet wurde)
         if (!isset($_SESSION['player']) || !isset($_SESSION['enemy']) || isset($_POST['restart'])) {
             $_SESSION['player'] = new Character(120, 8, 12, 18);
             $_SESSION['player']->setName("Gandalf");
 
-            // add skills to user values if they exist
+            // Skillpunkte zu den Charakter Werten hinzufügen
             if (isset($_SESSION['player_skills'])) {
                 updateSkills();
             }
 
             $_SESSION['isWinner'] = false;
 
-            // pick random enemy
+            // zufälligen Gegner auswählen
             chooseEnemy();
             return;
         }
 
-        // Check if the 'attack' action has been triggered via a POST request
+        // Überprüfe ob eine Angriffsaktion ausgelöst wurde
         if (isset($_POST['attack'])) {
 
-            // Player attacks the enemy with the specified weapon
+            // Spieler greift den Gegner mit spezifischer Waffe an
             $dmg = $_SESSION['player']->attack($_POST['weapon']);
             $enemy_hp = $_SESSION['enemy']->getHealth() - $dmg;
             $_SESSION['enemy']->setHealth($enemy_hp);
 
-            // Enemy defends and counterattacks, player takes damage
+            // Gegner verteidigt sich und kontert den Angriff
             $dmg_taken = $_SESSION['enemy']->defend($_POST['block_dir']);
             $player_hp = $_SESSION['player']->getHealth() - $dmg_taken;
             $_SESSION['player']->setHealth($player_hp);
         }
         
-        // something got skilled
+        // ein Skillpunkt wurde vergeben
         if (isset($_POST['set_skills']) && isset($_SESSION['isWinner'])) {
             $healthPoints = isset($_POST['health_points']) ? 1 : 0;
             $strengthPoints = isset($_POST['strength_points']) ? 1 : 0;
             $dexterityPoints = isset($_POST['dexterity_points']) ? 1 : 0;
             $intelligencePoints = isset($_POST['intelligence_points']) ? 1 : 0;
         
-            // verify that points are not exceeding the correct amount
+            // sicherstellen das die Summe der Skillpunkte <= max Skillpunkte
             $totalPoints = $healthPoints + $strengthPoints + $dexterityPoints + $intelligencePoints;
         
             if ($totalPoints <= $_SESSION['player']->getSkillPoints()) {
-                $_SESSION['player_skills'] = [ // get skills from session and add new ones
+                $_SESSION['player_skills'] = [ // aktuelle skillpunkte abfragen und überschreibenwas
                     'health' => $healthPoints + ($_SESSION['player_skills']['health'] ?? 0),
                     'strength' => $strengthPoints + ($_SESSION['player_skills']['strength'] ?? 0),
                     'dexterity' => $dexterityPoints + ($_SESSION['player_skills']['dexterity'] ?? 0),
@@ -64,17 +64,17 @@
     }
 
     /**
-     * Selects a random enemy for the player to fight against.
+     * Wählt einen zufälligen Gegner aus, gegen den der Spieler kämpfen soll.
      *
-     * This function randomly chooses an enemy from three predefined options:
-     * - Sauron (Normal difficulty)
-     * - Morgoth (Medium difficulty)
-     * - Gul'dan (Hard difficulty)
+     * Diese Funktion wählt zufällig einen Gegner aus drei vordefinierten Optionen aus:
+     * – Sauron (Normaler Schwierigkeitsgrad)
+     * – Morgoth (Mittlerer Schwierigkeitsgrad)
+     * – Gul'dan (Schwerer Schwierigkeitsgrad)
      *
-     * Each enemy has different health, strength, dexterity, and intelligence values.
-     * The selected enemy is assigned to the `$_SESSION['enemy']` variable, and their attributes
-     * are used for the battle mechanics.
-     *
+     * Jeder Gegner hat unterschiedliche Werte für Gesundheit, Stärke, Geschicklichkeit und Intelligenz.
+     * Der ausgewählte Gegner wird der Variable `$_SESSION['enemy']` zugewiesen, und seine Attribute
+     * werden für die Kampfmechanik verwendet.
+ *
      * @return void
      */
     function chooseEnemy(): void {
@@ -86,11 +86,12 @@
     }
 
     /**
-     * Updates the player's attributes by adding the skill points stored in the session.
-     * 
-     * This function retrieves the player's current attributes (Health, Strength, Dexterity, Intelligence) 
-     * from the session and adds the corresponding skill points from `$_SESSION['player_skills']` to each attribute.
-     * 
+     * Aktualisiert die Spielerattribute durch Hinzufügen der in der Sitzung gespeicherten Fertigkeitspunkte.
+     *
+     * Diese Funktion ruft die aktuellen Spielerattribute (Gesundheit, Stärke, Geschicklichkeit, Intelligenz)
+     * aus der Sitzung ab und fügt jedem Attribut die entsprechenden Fertigkeitspunkte aus `$_SESSION['player_skills']` hinzu.
+     *
+     *
      * @return void
      */
     function updateSkills(): void {

@@ -1,9 +1,9 @@
 <h1 align="center">
-     🕹️ RPG-Roleplay-Game ~ Learn to work with PHP!
+     🕹️ RPG-Roleplay-Game ~ Lerne mit PHP zu arbeiten!
 </h1>
 
 <p align="center">
-  <i align="center">This little RPG game is about a fight in which you must attack your opponent and defend yourself.</i>
+  <i align="center">Dieses kleine Rollenspiel dreht sich um einen Kampf, bei dem du deinen Gegner angreifen und dich verteidigen musst.</i>
   <br /><br />
 
   <img src="https://i.imgur.com/xcb6NNm.png" align="center">
@@ -20,29 +20,29 @@
   <br>
 </h4>
 
-## 🗯️ Introduction
-› This project was originally a task for my vocational training as a software developer - it's about building a small role-playing game in which you must attack and defend yourself against the enemy.
+## 🗯️ Einführung
+› Dieses Projekt war ursprünglich eine Aufgabe für meine Berufsausbildung zum Softwareentwickler - es geht darum, ein kleines Rollenspiel zu entwickeln, in welchem du den Feind angreifen und dich verteidigen musst.
 
-## 🧮 Features
-› `RPG-Roleplay-Game` offers some fundamental features that help you better understand or apply basic concepts in certain areas.
+## 🧮 Funktionen
+› `RPG-Roleplay-Game` bietet einige grundlegende Funktionen, die dir helfen, die grundlegenden Konzepte in bestimmten Bereichen besser zu verstehen oder anzuwenden.
 <br />
 
-It supports following <strong>features</strong>:
+Das Spiel unterstützt folgende <strong>Funktionen</strong>:
 <ul> 
-  <li>🖼️ <strong>Creative & beautiful design</strong>: We have put a lot of thought into the design of the website and wanted it to be something unique - we have put a lot of love and attention to detail into it.</li>
+  <li>🖼️ <strong>Kreatives und schönes Design</strong>: Wir haben viel Arbeit in das Design der Website gesteckt und wollten, dass es etwas Einzigartiges wird - wir haben viel Liebe und Liebe zum Detail investiert.</li>
   <br /> 
-  <li>💡 <strong>Light & Dark-Mode</strong>: Based on your system settings, you will get a light or dark mode of the small website.</li> 
+  <li>💡 <strong>Heller und Dunkel-Modus</strong>: Basierend auf deinen Systemeinstellungen erhältst du eine helle oder dunkle Version der kleinen Website.</li> 
   <br /> 
-  <li>📱 <strong>Responsive for all Devices</strong>: We have put a special focus on ensuring that the website is beautifully and user-friendly displayed on as many devices as possible.</li> 
+  <li>📱 <strong>Responsives Design für alle Geräte</strong>: Wir haben besonders darauf geachtet, dass die Website auf möglichst vielen Geräten schön und benutzerfreundlich angezeigt wird.</li> 
   <br /> 
-  <li>📱 <strong>Working with PHP Classes</strong>: You will get a first, small insight into how classes and SESSIONS work in PHP.</li> 
+  <li>📱 <strong>Arbeiten mit PHP-Klassen</strong>: Sie erhalten einen ersten, kleinen Einblick, wie Klassen und SESSIONS in PHP funktionieren.</li> 
   <br /> 
 </ul>
 
 ## 🔨 Installation
-› Before you can start exploring our small website for learning purposes, there are a few preparations you need to make.
+› Bevor du mit der Erkundung unserer kleinen Website für Lernzwecke beginnen können, gibt es einige Vorbereitungen, die du treffen musst.
 
-💡 › You will need a <strong>web server capable of running PHP 8.0</strong>.<br /><br />
-Then, follow these steps to ensure everything runs smoothly:
-1. Clone the Git repository.
-2. Place the entire content of this project in the folder of your webserver and start it.
+💡 › Du benötigst einen <strong>Webserver, der PHP 8.0 ausführen kann</strong>.<br /><br />
+Dann folge diesen Schritten, um sicherzustellen, dass alles reibungslos läuft:
+1. Klonen Sie das Git-Repository.
+2. Platzieren Sie den gesamten Inhalt dieses Projekts im Ordner Ihres Webservers und starten Sie es.

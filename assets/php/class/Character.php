@@ -1,7 +1,7 @@
 <?php
 
 class Character {
-    // Attributes
+    // Attribute
     private string $name;
     private int $health;
     private int $strength;
@@ -11,7 +11,7 @@ class Character {
     private int $skillPoints = 0;
     private int $maxHealth = 100;
 
-    // Constructor: called when a new object is created, set default values
+    // Konstruktor: wird aufgerufen, wenn ein neues Objekt erstellt wird, legt Standardwerte fest
     public function __construct(int $health = 100, int $strength = 10, int $dexterity = 10, int $intelligence = 10,
                                 string $name = "Unnamed") {
         $this->health = $health;
@@ -25,39 +25,39 @@ class Character {
     //              FIGHT METHODS
 
     /**
-     * Calculates the attack damage based on the weapon type and character's strength.
+     * Berechnet den Angriffsschaden basierend auf Waffentyp und Charakterstärke.
      *
-     * @param string $weapon_type The type of weapon used for the attack.
-     * @return int The calculated damage of the attack.
+     * @param string $weapon_type Der für den Angriff verwendete Waffentyp.
+     * @return int Der berechnete Schaden des Angriffs.
      */
     public function attack(string $weapon_type): int {
         $baseDmg = match($weapon_type) {
             'Schwert' => 10,
             'Dolch' => 6,
             'Feuerball' => 5 + $this->intelligence * 0.3,
-            'Magischer Schlag' => ($this->strength + $this->intelligence) * 0.4, // 40% of strength and intelligence
+            'Magischer Schlag' => ($this->strength + $this->intelligence) * 0.4, // 40 % der Stärke und Intelligenz
             default => 4
         };
 
-        // 50% of the strength attribute is added to the base damage
-        $dmg = $this->strength * 10;//0.5; // 50% of strength is added to all attacks
+        // 50 % des Stärkeattributs werden zum Basisschaden hinzugefügt
+        $dmg = $this->strength * 0.5; // 50 % der Stärke werden allen Angriffen hinzugefügt
         return (int)($baseDmg + $dmg);
     }
 
     /**
-     * Defends against an enemy attack by blocking in a specified direction.
+     * Verteidigt einen gegnerischen Angriff durch Blocken in eine bestimmte Richtung.
      *
-     * @param string $block_dir The direction in which the character attempts to block (e.g., "unten", "mitte", "oben").
-     * @return int Returns 0 if the block is successful, otherwise returns 10.
+     * @param string $block_dir Die Richtung, in die der Charakter zu blocken versucht (z. B. „unten“, „mitte“, „oben“).
+     * @return int Gibt 0 zurück, wenn der Block erfolgreich ist, andernfalls 10.
      */
     public function defend(string $block_dir): int {
         $enemy_pos = ["unten", "mitte", "oben"][rand(0, 2)];
 
         if ($block_dir === $enemy_pos) {
-            return 0; // block success
+            return 0; // block erfolgreich
         }
 
-        return 10; // block failed
+        return 10; // block fehlgeschlagen
     }
 
 

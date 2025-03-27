@@ -5,11 +5,11 @@
             require_once "assets/php/class/Character.php";
             require_once "assets/php/form.php";
 
-            // use session to store the characters
-            // without a session, the characters would be reset on every form.php submission
+            // Sitzung verwenden, um Daten zu speichern
+            // ohne eine Sitzung würden diese bei jeder form.php-Übermittlung zurückgesetzt werden
             session_start();
 
-            // initialize the characters and handle the attack action
+            // Charakter initialisieren & POST-Abfragen bearbeiten
             initCharacters();
         ?>
 
@@ -20,7 +20,7 @@
         <title>RPG Game - <?php echo $_SESSION['player']->getName() . " vs. " . $_SESSION['enemy']->getName(); ?></title>
 
         <script>
-            <!-- don't make POST requests again on page reload (is annoying) -->
+            <!-- beim Neuladen der Seite keine erneuten POST-Anfragen stellen (das nervt) -->
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
@@ -28,7 +28,7 @@
     </head>
     <body style="display: flex; flex-direction: column; align-items: center;">
         
-    <!-- Page Title -->
+    <!-- Seiten-Titel -->
     <h1 style="text-align: center; margin-bottom: 20px;">
         <?php echo "<h1>" . $_SESSION['player']->getName() . " vs. " . $_SESSION['enemy']->getName() . "</h1>"; ?>
         <br />
@@ -36,7 +36,7 @@
 
     <form method="POST">
         <div class="game-container">
-            <!-- Player Character -->
+            <!-- Spieler Charakter -->
             <?php if ($_SESSION['player']) : ?>
                 <div class="character-panel">
                     <div class="panel-title">Mein Charakter</div>
@@ -60,7 +60,7 @@
                         <span>Geschicklichkeit: <?php echo $_SESSION['player']->getDexterity(); ?></span>
                     </div>
 
-                    <!-- Pick weapon to attack -->
+                    <!-- Waffe zum Angreifen auswählen -->
                     <div style="margin-top: 15px;">
                         <label for="weapon" class="panel-title">Waffenauswahl</label>
                         <div style="height: 10px;"></div>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
 
-                    <!-- Pick block direction to defend -->
+                    <!-- Blockrichtung festlegen -->
                     <div style="margin-top: 15px;">
                         <label for="block_dir" class="panel-title">Blockrichtung</label>
                         <div style="height: 10px;"></div>
@@ -142,7 +142,7 @@
                 </div>
             <?php endif; ?>
 
-            <!-- Enemy Character -->
+            <!-- Gegnerischer Charakter -->
             <?php if ($_SESSION['enemy']) : ?>
             <div class="character-panel" style="display: flex; flex-direction: column;">
                 <div class="panel-title">Gegner - <?php echo $_SESSION['enemy']->getName() ?></div>
@@ -168,18 +168,18 @@
                 <div style="margin-top: 5px;">
                     <div class="panel-title">Kampffortschritt</div>
                     <?php
-                        // calculate progress for bar
+                        // Prozente für Fortschrittsleiste berechnen
                         $maxEnemyHealth = $_SESSION['enemy']->getMaxHealth();
                         $currentEnemyHealth = $_SESSION['enemy']->getHealth();
                         $healthLost = $maxEnemyHealth - $currentEnemyHealth;
                         $progressPercentage = ($healthLost / $maxEnemyHealth) * 100;
 
-                        // set unique color based on $progressPercentage
-                        $barColor = "#FF5252"; // red
+                        // Einzigaritge Farbe festlegen basierend auf $progressPercentage
+                        $barColor = "#FF5252"; // rot
                         if ($progressPercentage >= 25 && $progressPercentage < 75) {
                             $barColor = "#FFA726"; // orange
                         } elseif ($progressPercentage >= 75) {
-                            $barColor = "#66BB6A"; // green
+                            $barColor = "#66BB6A"; // grün
                         }
                     ?>
 
@@ -202,7 +202,7 @@
                 <div class="game-status">
                     <?php
                         if ($_SESSION['enemy']->getHealth() <= 0 && $_SESSION['player']->getSkillPoints() == 0) {
-                            $_SESSION['player']->addSkillPoints(2); // add skill points
+                            $_SESSION['player']->addSkillPoints(2); // Skill Punkte hinzufügen
                             $_SESSION['isWinner'] = true;
 
                             echo "<div class='green'>Du hast gewonnen! 🎉</div>";
